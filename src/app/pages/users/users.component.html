@@ -1,0 +1,34 @@
+<div class="users">
+  <p-table [value]="users" [responsive]="true" autoLayout="true" [loading]="loading">
+    <ng-template pTemplate="caption">
+        <div class="users__table__caption">
+          <div class="users__table__caption-left">
+            <button type="button" pButton icon="pi pi-user-plus" pTooltip="Add user"></button>
+          </div>
+
+          <div class="users__table__caption-center">
+            List of users
+          </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let element of columns">{{ element }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td><app-user-actions [user]="user"></app-user-actions></td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+        <p-paginator [rows]="perPage" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+    </ng-template>
+  </p-table>
+</div>

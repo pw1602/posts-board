@@ -1,0 +1,31 @@
+nav {
+  padding: 5px;
+  background-color: rgb(223, 223, 223);
+
+	ul {
+		list-style-type: none;
+		display: inline-block;
+		margin: 0 auto;
+
+		li {
+			display: inline-block;
+
+			a {
+				text-decoration: none;
+				display: inline-block;
+				color: black;
+				padding: 8px;
+				cursor: pointer;
+
+				&:hover {
+					background-color: yellow;
+				}
+
+				&.active {
+					background-color: red;
+				}
+			}
+		}
+
+	}
+}

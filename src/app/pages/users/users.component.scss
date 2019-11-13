@@ -1,0 +1,24 @@
+.users {
+  align-self: center;
+  justify-self: center;
+  grid-column: 2 / 3;
+}
+
+.users__table__caption {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+
+  &-left {
+    grid-column: 1 / 2;
+    text-align: start;
+  }
+
+  &-center {
+    grid-column: 2 / 3;
+  }
+
+  &-right {
+    grid-column: 3 / 4;
+  }
+}
