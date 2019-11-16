@@ -1,0 +1,18 @@
+<form [formGroup]="postForm" (ngSubmit)="submit()">
+  <p-dialog header="Add post" [(visible)]="visible" [modal]="true" [responsive]="true" (onHide)="changeVisible()">
+    <div class="form">
+      <label class="form__label" for="title">Title</label>
+      <input class="form__input" id="title" type="text" pInputText required formControlName="title"/>
+      <app-error-message class="form__error" [control]="f.title"></app-error-message>
+
+      <label class="form__label" for="body">Body</label>
+      <textarea class="form__textarea" id="body" pInputTextarea autoResize="true" required formControlName="body"></textarea>
+      <app-error-message class="form__error" [control]="f.body"></app-error-message>
+    </div>
+
+    <p-footer>
+      <button type="submit" pButton icon="pi pi-check" label="Save" [disabled]="postForm.invalid"></button>
+      <button type="button" pButton icon="pi pi-times" label="Cancel" (click)="changeVisible()"></button>
+    </p-footer>
+  </p-dialog>
+</form>

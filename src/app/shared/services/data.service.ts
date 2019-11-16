@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { User } from '@core/interfaces/user';
 import { Post } from '@/core/interfaces/post';
@@ -38,10 +37,8 @@ export class DataService {
     return this.http.post(`${this.url}/users`, user);
   }
 
-  getUserPosts(id: number): Observable<Post[]> {
-    return this.http.get(`${this.url}/posts?user_id=${id}`).pipe(
-      map((value: any) => value.result)
-    );
+  getUserPosts(id: number, page?: number): Observable<any> {
+    return this.http.get(`${this.url}/posts?user_id=${id}&page=${page || 1}`);
   }
 
   createPost(post: Post): Observable<any> {

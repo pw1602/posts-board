@@ -1,40 +1,39 @@
 <ng-container *ngIf="user">
+  <h1>User Information</h1>
+
   <div class="info">
-    <label for="first_name">First Name</label>
-    <input type="text" id="first_name" pInputText disabled [placeholder]="user.first_name"/>
-
-    <label for="last_name">Last Name</label>
-    <input type="text" id="last_name" pInputText disabled [placeholder]="user.last_name"/>
-
-    <label for="email">Email</label>
-    <input type="text" id="email" pInputText disabled [placeholder]="user.email"/>
-
-    <label for="phone">Phone</label>
-    <input type="text" id="phone" pInputText disabled [placeholder]="user.phone"/>
-
-    <label for="address">Address</label>
-    <input type="text" id="address" pInputText disabled [placeholder]="user.address"/>
+      <strong class="info__label">First Name:</strong><span class="info__value">{{ user.first_name }}</span>
+      <strong class="info__label">Last Name:</strong><span class="info__value">{{ user.last_name }}</span>
+      <strong class="info__label">Email:</strong><span class="info__value">{{ user.email }}</span>
+      <strong class="info__label">Phone:</strong><span class="info__value">{{ user.phone }}</span>
+      <strong class="info__label">Address:</strong><span class="info__value">{{ user.address }}</span>
   </div>
-</ng-container>
 
-<ng-container *ngIf="user && user.posts.length">
-  <div class="posts">
-    <p-virtualScroller [value]="user.posts" scrollHeight="750px">
-      <p-header class="posts__header">
-        <div class="posts__header--left">
-          <button pButton type="button" icon="pi pi-plus" pTooltip="Add post"></button>
-        </div>
-        <div class="posts__header--center">
-          User Posts
-        </div>
-      </p-header>
+  <ng-container *ngIf="user.posts.length">
+    <div class="posts">
+      <p-dataView [value]="user.posts">
+        <p-header class="posts__header">
+          <div class="posts__header--left">
+            <button pButton type="button" icon="pi pi-plus" pTooltip="Add post" (click)="visibleDialog=true"></button>
+          </div>
+          <div class="posts__header--center">
+            User Posts
+          </div>
+        </p-header>
 
-      <ng-template pTemplate="item" let-post>
-        <div class="posts__content">
-          <h5>{{ post.title }}</h5>
-          <p>{{ post.body }}</p>
-        </div>
-      </ng-template>
-    </p-virtualScroller>
-  </div>
+        <p-footer>
+          <p-paginator [rows]="perPage" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+        </p-footer>
+
+        <ng-template pTemplate="listItem" let-post>
+          <div class="posts__content">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body }}</p>
+          </div>
+        </ng-template>
+      </p-dataView>
+    </div>
+  </ng-container>
+
+  <app-add-post [(visible)]="visibleDialog"></app-add-post>
 </ng-container>

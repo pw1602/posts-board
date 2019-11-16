@@ -16,7 +16,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { DataViewModule } from 'primeng/dataview';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +29,7 @@ import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
 import { AddUserComponent } from '@core/components/add-user/add-user.component';
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
 import { UserInfoComponent } from '@pages/user-info/user-info.component';
+import { AddPostComponent } from './shared/components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UserInfoComponent } from '@pages/user-info/user-info.component';
     UserActionsComponent,
     AddUserComponent,
     ErrorMessageComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { UserInfoComponent } from '@pages/user-info/user-info.component';
     SelectButtonModule,
     ToastModule,
     ConfirmDialogModule,
-    VirtualScrollerModule
+    DataViewModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

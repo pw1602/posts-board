@@ -1,22 +1,28 @@
+h1 {
+  grid-column: 1 / 4;
+  justify-self: center;
+  margin: 15px;
+}
+
 .info {
-  grid-column: 2 / 4;
   display: grid;
   grid-template-columns: [labels] auto [controls] 1fr;
   grid-auto-rows: row;
+  margin: 10px;
 
-  & > label {
+  & > .info__label {
     grid-column: [labels];
     margin: 5px;
   }
 
-  & > input {
+  & > .info__value {
     grid-column: [controls];
     margin: 5px;
   }
 }
 
 .posts {
-  grid-column: 1 / 5;
+  grid-column: 1 / 4;
   padding: 10px;
 }
 
@@ -32,6 +38,7 @@
 
 .posts__header--center {
   grid-column: 2 / 3;
+  text-align: center;
 }
 
 .posts__header--right {
@@ -40,6 +47,7 @@
 
 .posts__content {
   padding: 10px;
+  border-bottom: 1px solid #c8c8c8;
 
   h5 {
     margin: 5px;
