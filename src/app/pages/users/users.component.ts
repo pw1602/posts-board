@@ -14,8 +14,8 @@ export class UsersComponent implements OnInit {
   loading: boolean;
   totalRecords = 100;
   perPage = 20;
-
-  private currentPage = 0;
+  visibleDialog = false;
+  currentPage = 0;
 
   constructor(private dataService: DataService) { }
 
@@ -32,14 +32,21 @@ export class UsersComponent implements OnInit {
     this.getUsers(event.page + 1);
   }
 
-  private getUsers(page?: number): void {
+  getUsers(page?: number): void {
     this.loading = true;
-    this.dataService.getAllUsers(page).subscribe((data: any) => {
+    this.dataService.getAllUsers(page).subscribe(data => {
       this.users = data.result;
       this.totalRecords = data._meta.totalCount;
       this.perPage = data._meta.perPage;
       this.currentPage = data._meta.currentPage;
       this.loading = false;
     });
+  }
+
+  deleteUser(user: User): void {
+    const found = this.users.findIndex(val => val.id === user.id);
+    if (found) {
+      this.users.splice(found, 1);
+    }
   }
 }

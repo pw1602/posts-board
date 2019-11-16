@@ -1,3 +1,6 @@
-<ng-container *ngFor="let button of buttons">
-  <button type="button" pButton [icon]="button.icon" [pTooltip]="button.tooltip"></button>
-</ng-container>
+<button type="button" pButton icon="pi pi-user" pTooltip="View user" (click)="view()"></button>
+<button type="button" pButton icon="pi pi-user-edit" pTooltip="Edit user" (click)="visibleDialog = true"></button>
+<button type="button" pButton icon="pi pi-user-minus" pTooltip="Delete user" (click)="delete()"></button>
+
+<p-confirmDialog></p-confirmDialog>
+<app-add-user [(visible)]="visibleDialog" [user]="user" [submitClose]="true" (userChange)="changeUser($event)"></app-add-user>

@@ -1,0 +1,30 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+  <p-dialog [header]="getHeader()" [(visible)]="visible" [modal]="true" [responsive]="true" (onHide)="changeVisible()" (onShow)="fillForm()">
+    <div class="form">
+      <label class="form__label" for="first_name">First Name</label>
+      <input class="form__input" id="first_name" type="text" pInputText required formControlName="first_name"/>
+      <app-error-message class="form__error" [control]="f.first_name"></app-error-message>
+
+      <label class="form__label" for="last_name">Last Name</label>
+      <input class="form__input" id="last_name" type="text" pInputText required formControlName="last_name"/>
+      <app-error-message class="form__error" [control]="f.last_name"></app-error-message>
+
+      <label class="form__label" for="email">Email</label>
+      <input class="form__input" id="email" type="text" pInputText required formControlName="email"/>
+      <app-error-message class="form__error" [control]="f.email"></app-error-message>
+
+      <label class="form__label" for="phone">Phone</label>
+      <input class="form__input" id="phone" type="" pInputText required formControlName="phone"/>
+      <app-error-message class="form__error" [control]="f.phone"></app-error-message>
+
+      <label class="form__label" for="address">Address</label>
+      <textarea class="form__textarea" id="address" pInputTextarea autoResize="true" required formControlName="address"></textarea>
+      <app-error-message class="form__error" [control]="f.address"></app-error-message>
+    </div>
+
+    <p-footer>
+      <button type="submit" pButton icon="pi pi-check" label="Save" [disabled]="userForm.invalid"></button>
+      <button type="button" pButton icon="pi pi-times" label="Cancel" (click)="changeVisible()"></button>
+    </p-footer>
+  </p-dialog>
+</form>

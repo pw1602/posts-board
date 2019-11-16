@@ -6,6 +6,17 @@ import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
+import { InputTextModule } from 'primeng/inputtext';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,14 +25,20 @@ import { UsersComponent } from '@pages/users/users.component';
 import { DataService } from '@shared/services/data.service';
 import { MainNavigationComponent } from '@core/components/main-navigation/main-navigation.component';
 import { UserActionsComponent } from '@pages/users/user-actions/user-actions.component';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { AuthInterceptor } from '@core/interceptors/auth.interceptor';
+import { AddUserComponent } from '@core/components/add-user/add-user.component';
+import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
+import { UserInfoComponent } from '@pages/user-info/user-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     MainNavigationComponent,
-    UserActionsComponent
+    UserActionsComponent,
+    AddUserComponent,
+    ErrorMessageComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +48,21 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     TableModule,
     PaginatorModule,
     ButtonModule,
-    TooltipModule
+    TooltipModule,
+    InputTextModule,
+    DialogModule,
+    InputTextareaModule,
+    ReactiveFormsModule,
+    MessagesModule,
+    MessageModule,
+    SelectButtonModule,
+    ToastModule,
+    ConfirmDialogModule,
+    VirtualScrollerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    DataService
+    DataService, MessageService
   ],
   bootstrap: [AppComponent]
 })

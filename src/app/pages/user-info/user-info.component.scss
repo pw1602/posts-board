@@ -1,0 +1,51 @@
+.info {
+  grid-column: 2 / 4;
+  display: grid;
+  grid-template-columns: [labels] auto [controls] 1fr;
+  grid-auto-rows: row;
+
+  & > label {
+    grid-column: [labels];
+    margin: 5px;
+  }
+
+  & > input {
+    grid-column: [controls];
+    margin: 5px;
+  }
+}
+
+.posts {
+  grid-column: 1 / 5;
+  padding: 10px;
+}
+
+.posts__header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.posts__header--left {
+  grid-column: 1 / 2;
+  text-align: start;
+}
+
+.posts__header--center {
+  grid-column: 2 / 3;
+}
+
+.posts__header--right {
+  grid-column: 3 / 4;
+}
+
+.posts__content {
+  padding: 10px;
+
+  h5 {
+    margin: 5px;
+  }
+
+  p {
+    margin: 5px;
+  }
+}

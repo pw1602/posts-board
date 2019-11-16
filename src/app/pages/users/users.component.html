@@ -3,7 +3,7 @@
     <ng-template pTemplate="caption">
         <div class="users__table__caption">
           <div class="users__table__caption-left">
-            <button type="button" pButton icon="pi pi-user-plus" pTooltip="Add user"></button>
+            <button type="button" pButton icon="pi pi-user-plus" pTooltip="Add user" (click)="visibleDialog=true;"></button>
           </div>
 
           <div class="users__table__caption-center">
@@ -23,7 +23,7 @@
         <td>{{ user.first_name }}</td>
         <td>{{ user.last_name }}</td>
         <td>{{ user.email }}</td>
-        <td><app-user-actions [user]="user"></app-user-actions></td>
+        <td><app-user-actions [user]="user" (userDelete)="deleteUser($event)" (userChange)="getUsers(currentPage)"></app-user-actions></td>
       </tr>
     </ng-template>
 
@@ -32,3 +32,5 @@
     </ng-template>
   </p-table>
 </div>
+
+<app-add-user [(visible)]="visibleDialog" (addedUser)="getUsers(currentPage)"></app-add-user>
