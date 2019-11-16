@@ -37,6 +37,10 @@ export class DataService {
     return this.http.post(`${this.url}/users`, user);
   }
 
+  getAllPosts(page?: number): Observable<any> {
+    return this.http.get(`${this.url}/posts?_format=json&page=${page || 1}`);
+  }
+
   getUserPosts(id: number, page?: number): Observable<any> {
     return this.http.get(`${this.url}/posts?user_id=${id}&page=${page || 1}`);
   }
@@ -45,8 +49,8 @@ export class DataService {
     return this.http.post(`${this.url}/posts`, post);
   }
 
-  getPostComments(id: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.url}/comments?post_id=${id}`);
+  getPostComments(id: number, page?: number): Observable<any> {
+    return this.http.get(`${this.url}/comments?post_id=${id}&page=${page || 1}`);
   }
 
   createComment(comment: Comment): Observable<any> {

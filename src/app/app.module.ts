@@ -17,6 +17,8 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DataViewModule } from 'primeng/dataview';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { FieldsetModule } from 'primeng/fieldset';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +32,8 @@ import { AddUserComponent } from '@core/components/add-user/add-user.component';
 import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
 import { UserInfoComponent } from '@pages/user-info/user-info.component';
 import { AddPostComponent } from './shared/components/add-post/add-post.component';
+import { PostsComponent } from './pages/posts/posts.component';
+import { CommentsComponent } from './pages/posts/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,9 @@ import { AddPostComponent } from './shared/components/add-post/add-post.componen
     AddUserComponent,
     ErrorMessageComponent,
     UserInfoComponent,
-    AddPostComponent
+    AddPostComponent,
+    PostsComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,9 @@ import { AddPostComponent } from './shared/components/add-post/add-post.componen
     SelectButtonModule,
     ToastModule,
     ConfirmDialogModule,
-    DataViewModule
+    DataViewModule,
+    ProgressSpinnerModule,
+    FieldsetModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

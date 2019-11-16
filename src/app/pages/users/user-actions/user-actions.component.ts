@@ -59,6 +59,6 @@ export class UserActionsComponent implements OnInit {
   }
 
   view(): void {
-    this.router.navigate([`/users/${this.user.first_name} ${this.user.last_name}`]);
+    this.router.navigate([`/user/${this.user.first_name} ${this.user.last_name}`]);
   }
 }

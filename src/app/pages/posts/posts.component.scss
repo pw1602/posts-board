@@ -1,0 +1,28 @@
+h1 {
+  margin: 15px;
+}
+
+.center {
+  grid-column: 1 / 4;
+  justify-self: center;
+  align-self: center;
+}
+
+.posts {
+  grid-column: 2 / 3;
+  justify-self: center;
+  max-width: 50%;
+}
+
+.post {
+  margin: 20px;
+}
+
+.post__body {
+  padding: 15px;
+}
+
+.post__author {
+  padding: 5px;
+  color: grey;
+}

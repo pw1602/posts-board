@@ -12,6 +12,7 @@ import { Post } from '@/core/interfaces/post';
 })
 export class AddPostComponent implements OnInit {
   @Input() visible: boolean;
+  @Input() userId: number;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter();
   @Output() addedPost: EventEmitter<boolean> = new EventEmitter();
 
@@ -45,6 +46,7 @@ export class AddPostComponent implements OnInit {
     }
 
     const postData = this.postForm.value;
+    postData.user_id = this.userId;
     this.createPost(postData);
   }
 

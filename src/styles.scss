@@ -6,6 +6,7 @@ html, body {
 
 * {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1em;
   margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -16,4 +17,35 @@ app-root {
 	grid-template-columns: auto 1fr;
 	grid-template-rows: repeat(3, auto);
 	gap: 10px 10px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: [labels] auto [controls] 1fr;
+  grid-auto-flow: row;
+  gap: .8em;
+  padding: 1.2em;
+  text-align: center;
+
+  & > .form__error {
+    grid-column: 2 / 3;
+  }
+
+  & > .form__label {
+		grid-column: labels;
+		grid-row: auto;
+		font-size: 1.2em;
+	}
+
+  & > .form__input {
+    grid-column: controls;
+    grid-row: auto;
+    padding: .4em;
+  }
+
+  & > .form__textarea {
+    grid-column: controls;
+    grid-row: auto;
+    padding: .4em;
+  }
 }

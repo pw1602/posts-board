@@ -1,0 +1,14 @@
+
+<p-fieldset legend="Comments" [toggleable]="true" [collapsed]="true" (onAfterToggle)="toggle($event)">
+  <ng-container *ngIf="!comments">
+    <p-progressSpinner class="center"></p-progressSpinner>
+  </ng-container>
+
+  <ng-container *ngIf="comments">
+    <div class="comment" *ngFor="let comment of comments">
+      <h5 class="comment__title">{{ comment.name }} ({{ comment.email }})</h5>
+      <p class="comment__body">{{ comment.body }}</p>
+    </div>
+    <p-paginator [rows]="perPage" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+  </ng-container>
+</p-fieldset>

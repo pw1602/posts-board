@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainNavigationComponent implements OnInit {
   links = [
-    { src: '/users', name: 'Users' },
-    { src: '/posts', name: 'Posts' }
+    { src: '/posts', name: 'Posts' },
+    { src: '/users', name: 'Users' }
   ];
 
   constructor() { }

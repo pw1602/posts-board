@@ -1,0 +1,19 @@
+<ng-container *ngIf="!posts">
+  <p-progressSpinner class="center"></p-progressSpinner>
+</ng-container>
+
+<ng-container *ngIf="posts">
+  <h1 class="center">Posts List</h1>
+
+  <div class="posts">
+    <div class="post" *ngFor="let post of posts; let index = index">
+      <h5>#{{ (currentPage - 1) * 20 + (index + 1) }} {{ post.title }}</h5>
+      <p class="post__body">{{ post.body }}</p>
+      <p class="post__author">Created by</p>
+      <div class="post__comment">
+        <app-comments [comments]="post.comments" (expanded)="getComments($event, post)" (pageChange)="changeCommentsPage($event, post)"></app-comments>
+      </div>
+    </div>
+    <p-paginator [rows]="perPage" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+</ng-container>
