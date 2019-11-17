@@ -19,6 +19,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DataViewModule } from 'primeng/dataview';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { FieldsetModule } from 'primeng/fieldset';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { UserInfoComponent } from '@pages/user-info/user-info.component';
 import { AddPostComponent } from './shared/components/add-post/add-post.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { CommentsComponent } from './pages/posts/comments/comments.component';
+import { AddCommentComponent } from './shared/components/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { CommentsComponent } from './pages/posts/comments/comments.component';
     UserInfoComponent,
     AddPostComponent,
     PostsComponent,
-    CommentsComponent
+    CommentsComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import { CommentsComponent } from './pages/posts/comments/comments.component';
     ConfirmDialogModule,
     DataViewModule,
     ProgressSpinnerModule,
-    FieldsetModule
+    FieldsetModule,
+    DropdownModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

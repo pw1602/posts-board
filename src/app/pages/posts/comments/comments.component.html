@@ -1,7 +1,7 @@
 
 <p-fieldset legend="Comments" [toggleable]="true" [collapsed]="true" (onAfterToggle)="toggle($event)">
-  <ng-container *ngIf="!comments">
-    <p-progressSpinner class="center"></p-progressSpinner>
+  <ng-container class="header" *ngIf="!comments">
+    <p-progressSpinner class="header__center"></p-progressSpinner>
   </ng-container>
 
   <ng-container *ngIf="comments">

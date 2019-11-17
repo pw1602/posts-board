@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { User } from '@core/interfaces/user';
 import { Post } from '@/core/interfaces/post';
+import { Comment } from '@core/interfaces/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,9 @@ export class DataService {
   }
 
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.url}/users/${id}?_format=json`);
+    return this.http.get<User>(`${this.url}/users/${id}?_format=json`).pipe(
+      map((user: any) => user.result)
+    );
   }
 
   getUserByName(firstName: string, lastName: string): Observable<User> {
@@ -42,7 +46,7 @@ export class DataService {
   }
 
   getUserPosts(id: number, page?: number): Observable<any> {
-    return this.http.get(`${this.url}/posts?user_id=${id}&page=${page || 1}`);
+    return this.http.get(`${this.url}/posts?user_id=${id}&page=${page || 1}&_format=json`);
   }
 
   createPost(post: Post): Observable<any> {
@@ -50,7 +54,7 @@ export class DataService {
   }
 
   getPostComments(id: number, page?: number): Observable<any> {
-    return this.http.get(`${this.url}/comments?post_id=${id}&page=${page || 1}`);
+    return this.http.get(`${this.url}/comments?post_id=${id}&page=${page || 1}&_format=json`);
   }
 
   createComment(comment: Comment): Observable<any> {

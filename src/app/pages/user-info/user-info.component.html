@@ -1,5 +1,7 @@
 <ng-container *ngIf="user">
-  <h1>User Information</h1>
+  <div class="header">
+      <h1 class="header__center">User Information</h1>
+  </div>
 
   <div class="info">
       <strong class="info__label">First Name:</strong><span class="info__value">{{ user.first_name }}</span>
@@ -35,5 +37,5 @@
     </div>
   </ng-container>
 
-  <app-add-post [(visible)]="visibleDialog" [userId]="user.id"></app-add-post>
+  <app-add-post [(visible)]="visibleDialog" [userId]="user.id" (addedPost)="getPosts(currentPage)"></app-add-post>
 </ng-container>

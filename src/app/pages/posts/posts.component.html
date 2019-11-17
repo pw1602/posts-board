@@ -1,15 +1,24 @@
 <ng-container *ngIf="!posts">
-  <p-progressSpinner class="center"></p-progressSpinner>
+  <p-progressSpinner></p-progressSpinner>
 </ng-container>
 
 <ng-container *ngIf="posts">
-  <h1 class="center">Posts List</h1>
+  <div class="header">
+    <button class="header__left" type="button" pButton icon="pi pi-plus" pTooltip="Add post" label="Add Post" (click)="addPostDialog = true"></button>
+    <h1 class="header__center">Posts List</h1>
+  </div>
 
   <div class="posts">
     <div class="post" *ngFor="let post of posts; let index = index">
       <h5>#{{ (currentPage - 1) * 20 + (index + 1) }} {{ post.title }}</h5>
       <p class="post__body">{{ post.body }}</p>
-      <p class="post__author">Created by</p>
+
+      <div class="footer">
+        <p class="post__author">Created by {{ getCreator(post) }}</p>
+        <button class="footer__right" type="button" pButton icon="pi pi-plus" pTooltip="Add Comment" label="Comment" (click)="addCommentDialog[post.id] = true"></button>
+        <app-add-comment [(visible)]="addCommentDialog[post.id]" [post]="post" (addedComment)="changeCommentsPage(commentsPage, post)"></app-add-comment>
+      </div>
+
       <div class="post__comment">
         <app-comments [comments]="post.comments" (expanded)="getComments($event, post)" (pageChange)="changeCommentsPage($event, post)"></app-comments>
       </div>
@@ -17,3 +26,5 @@
     <p-paginator [rows]="perPage" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
   </div>
 </ng-container>
+
+<app-add-post [(visible)]="addPostDialog"></app-add-post>

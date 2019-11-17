@@ -1,4 +1,5 @@
 import { Comment } from '@core/interfaces/comment';
+import { User } from './user';
 
 export interface Post {
   id: number;
@@ -6,4 +7,5 @@ export interface Post {
   title: string;
   body: string;
   comments: Comment[];
+  user?: User;
 }

@@ -49,3 +49,40 @@ app-root {
     padding: .4em;
   }
 }
+
+.header {
+  grid-column: span 4;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  &__left {
+    grid-column: 1 / 2;
+    text-align: left;
+  }
+
+  &__center {
+    grid-column: 2 / 3;
+  }
+
+  &__right {
+    grid-column: 3 / 4;
+  }
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  &__left {
+    grid-column: 1 / 2;
+  }
+
+  &__center {
+    grid-column: 2 / 3;
+  }
+
+  &__right {
+    grid-column: 3 / 4;
+  }
+}

@@ -1,17 +1,21 @@
 <form [formGroup]="postForm" (ngSubmit)="submit()">
-  <p-dialog header="Add post" [(visible)]="visible" [modal]="true" [responsive]="true" (onHide)="changeVisible()">
+  <p-dialog header="Add post" [(visible)]="visible" [modal]="true" [responsive]="true" (onHide)="changeVisible()" (onShow)="getUser()" [contentStyle]="{'max-height':'500px'}">
     <div class="form">
+      <label class="form__label" for="user">User</label>
+      <p-dropdown class="form__input" [options]="users" (onShow)="getUsers()" optionLabel="email" id="user" formControlName="user" placeholder="Select User" required></p-dropdown>
+      <app-error-message class="form__error" [control]="f.user"></app-error-message>
+
       <label class="form__label" for="title">Title</label>
       <input class="form__input" id="title" type="text" pInputText required formControlName="title"/>
       <app-error-message class="form__error" [control]="f.title"></app-error-message>
 
       <label class="form__label" for="body">Body</label>
-      <textarea class="form__textarea" id="body" pInputTextarea autoResize="true" required formControlName="body"></textarea>
+      <textarea class="form__textarea" id="body" pInputTextarea autoResize="true" required formControlName="body" [autoResize]="true"></textarea>
       <app-error-message class="form__error" [control]="f.body"></app-error-message>
     </div>
 
     <p-footer>
-      <button type="submit" pButton icon="pi pi-check" label="Save" [disabled]="postForm.invalid"></button>
+      <button type="submit" pButton icon="pi pi-check" label="Add" [disabled]="postForm.invalid"></button>
       <button type="button" pButton icon="pi pi-times" label="Cancel" (click)="changeVisible()"></button>
     </p-footer>
   </p-dialog>

@@ -14,6 +14,8 @@ export class PostsComponent implements OnInit {
   perPage = 20;
   currentPage = 0;
   commentsPage = 1;
+  addPostDialog: boolean;
+  addCommentDialog = [];
 
   constructor(private dataService: DataService) { }
 
@@ -41,11 +43,19 @@ export class PostsComponent implements OnInit {
       this.totalRecords = res._meta.totalCount;
       this.perPage = res._meta.perPage;
       this.currentPage = res._meta.currentPage;
+
+      this.posts.forEach(post => {
+        this.dataService.getUserById(post.user_id).subscribe(result => post.user = result);
+      });
     });
   }
 
   changeCommentsPage(event: number, post: Post): void {
     this.commentsPage = event;
     this.getComments(true, post);
+  }
+
+  getCreator(post: Post): string {
+    return post.user ? `${post.user.first_name} ${post.user.last_name} (${post.user.email})` : 'Anonymous';
   }
 }

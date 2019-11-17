@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 
 import { DataService } from '@/shared/services/data.service';
 import { Post } from '@/core/interfaces/post';
+import { User } from '@core/interfaces/user';
 
 @Component({
   selector: 'app-add-post',
@@ -16,6 +17,8 @@ export class AddPostComponent implements OnInit {
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter();
   @Output() addedPost: EventEmitter<boolean> = new EventEmitter();
 
+  users: User[];
+
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -25,6 +28,7 @@ export class AddPostComponent implements OnInit {
   postForm = this.formBuilder.group({
     title: ['', Validators.compose([Validators.required])],
     body: ['', Validators.compose([Validators.required])],
+    user: ['', Validators.compose([Validators.required])]
   });
 
   ngOnInit() {
@@ -46,7 +50,7 @@ export class AddPostComponent implements OnInit {
     }
 
     const postData = this.postForm.value;
-    postData.user_id = this.userId;
+    postData.user_id = this.userId || postData.user.id;
     this.createPost(postData);
   }
 
@@ -68,6 +72,21 @@ export class AddPostComponent implements OnInit {
           detail: `Post cannot be added: ${res.result.map(v => v.message).join(', ')}`
         });
       }
+    });
+  }
+
+  getUsers(): void {
+    if (this.userId) {
+      return;
+    }
+
+    this.dataService.getAllUsers().subscribe(res => this.users = res.result);
+  }
+
+  getUser(): void {
+    this.dataService.getUserById(this.userId).subscribe(res => {
+      this.users = [res];
+      this.f.user.setValue(res);
     });
   }
 }
