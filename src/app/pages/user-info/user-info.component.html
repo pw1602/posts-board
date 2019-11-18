@@ -11,6 +11,12 @@
       <strong class="info__label">Address:</strong><span class="info__value">{{ user.address }}</span>
   </div>
 
+  <ng-container *ngIf="!user.posts.length">
+    <div class="posts">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+  </ng-container>
+
   <ng-container *ngIf="user.posts.length">
     <div class="posts">
       <p-dataView [value]="user.posts">
