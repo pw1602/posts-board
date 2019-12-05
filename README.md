@@ -1,27 +1,30 @@
-# Treative
+# Posts Board
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+It's cheap forum. Without login and creating account, just possibility to add posts, comments. You can check also users, view their information and posts or just delete them.
 
-## Development server
+### Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You can create account for API here: [GoREST API](https://gorest.co.in/)
+```
+Node.js v10.16.0
+GoREST API token
+```
 
-## Code scaffolding
+### Installing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+1. Clone repository.
+2. Run npm install inside it.
+3. Run ng serve to start development server.
+```
 
-## Build
+## Built With
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* [Nodejs](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine
+* [GoREST](https://gorest.co.in/) - Free online REST API for testing and propotyping
+* [Angular](https://angular.io/) - JavaScript-based open-source front-end web framework
+* [PrimeNG](http://primefaces.org/primeng/#/) - PrimeNG is a rich set of open source native Angular UI components.
 
-## Running unit tests
+## License
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

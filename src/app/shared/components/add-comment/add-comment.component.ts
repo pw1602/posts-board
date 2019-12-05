@@ -25,7 +25,7 @@ export class AddCommentComponent implements OnInit {
 
   commentForm = this.formBuilder.group({
     name: ['', Validators.compose([Validators.required])],
-    email: ['', Validators.compose([Validators.required])],
+    email: ['', Validators.compose([Validators.required, Validators.email])],
     body: ['', Validators.compose([Validators.required])]
   });
 
